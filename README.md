@@ -24,7 +24,7 @@ Or install it yourself as:
 Require the module in your `Capfile`:
 
 ```ruby
-require 'cap-newrelic'
+require 'capistrano/newrelic'
 ```
 
 `cap-newrelic` comes with 1 task `newrelic:notify`.
