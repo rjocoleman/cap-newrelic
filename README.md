@@ -37,6 +37,9 @@ By default the task will run after `deploy:finished`
 Configurable options, shown here with defaults:
 
 ```ruby
+set :git_user, nil
+set :git_log, nil
+
 set :new_relic_api_key, nil
 set :new_relic_app_name, fetch(:application)
 set :new_relic_url, 'https://api.newrelic.com/deployments.xml'
