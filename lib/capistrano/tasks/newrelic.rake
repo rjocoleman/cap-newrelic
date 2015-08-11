@@ -5,15 +5,13 @@ namespace :newrelic do
       run_locally do
         current_rev = fetch(:current_revision)
         previous_rev = fetch(:previous_revision)
-        local_user = capture('git config user.name').strip
-        changelog = capture("git log --oneline #{previous_rev}..#{current_rev}")
         deployment = {
           :deployment => {
             :app_name => fetch(:new_relic_app_name) || fetch(:application),
             :description => "Deploy #{fetch(:application)}/#{fetch(:branch)} to #{fetch(:stage)}",
-            :user => local_user,
+            :user => fetch(:git_user, nil),
             :revision => current_rev,
-            :changelog => changelog
+            :changelog => fetch(:git_changelog, nil)
           }
         }
         new_relic_api_key = fetch(:new_relic_api_key) || ENV['NEW_RELIC_API_KEY']
